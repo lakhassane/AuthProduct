@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?> 
+<plugin id="cordova-plugin-authenticate-product-barcode" version="0.0.1" 
+	xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+	<name>AuthProduct</name>
+	<js-module name="AuthProduct" src="www/AuthProduct.js">
+		<clobbers target="cordova.plugins.AuthProduct" />
+	</js-module>
+	<platform name="android">
+		<config-file parent="/*" target="res/xml/config.xml">
+			<feature name="AuthProduct">
+				<param name="android-package" value="cordova-plugin-authenticate-product-barcode.AuthProduct"/>
+			</feature>
+		</config-file>
+		<config-file parent="/*" target="AndroidManifest.xml"></config-file>
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.FLASHLIGHT" />
+            <!-- Not required to allow users to work around this -->
+            <uses-feature android:name="android.hardware.camera" android:required="false" />
+        </config-file>
+
+		<source-file src="src/android/AuthProduct.java" target-dir="src/cordova-plugin-authenticate-product-barcode/AuthProduct" />
+	</platform>
+</plugin>
